@@ -2,8 +2,8 @@ import axios from "axios";
 import { create } from "zustand";
 
 const request = axios.create({
-    baseURL:  process.env.VERCEL_URL,
-    timeout: 2500
+    baseURL: process.env.VERCEL_URL,
+    timeout: 5000
 })
 
 interface Ty {
@@ -21,9 +21,9 @@ export const useStore4 = create<Ty>((set) => {
             switch (type4) {
                 case 'all': res = await request.get('/api/comment/')
                     break;
-                
+
                 case 'user': res = await request.get(`/api/comment/${id4}`)
-                    break;    
+                    break;
 
                 case 'insert': res = await request.post('/api/comment/', overData4)
                     break;

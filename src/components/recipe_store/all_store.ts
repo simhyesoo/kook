@@ -3,15 +3,15 @@ import { create } from "zustand";
 
 const request = axios.create({
     baseURL: "/",
-    timeout: 5000   
+    timeout: 7000
 })
 
 interface Ty {
     data: any[];
     dataCrl: (type: string, id: string, overData: any) => void;
-    category:(cateName: string, index: number) => void;
-    cateName:string;
-    cateIdx:number;
+    category: (cateName: string, index: number) => void;
+    cateName: string;
+    cateIdx: number;
 
 }
 
@@ -20,8 +20,8 @@ export const useStore = create<Ty>((set) => {
     return {
         data: [],
         data2: [],
-        cateName:'밥',
-        cateIdx:0,
+        cateName: '밥',
+        cateIdx: 0,
         dataCrl: async function (type, id, overData) {
             let res: any;
             switch (type) {
@@ -51,16 +51,16 @@ export const useStore = create<Ty>((set) => {
 
         },
 
-        category:function(cateName,index){
+        category: function (cateName, index) {
 
-            set((state:any)=>{
-                return state.dataCrl("카테고리",cateName)
+            set((state: any) => {
+                return state.dataCrl("카테고리", cateName)
             })
 
-            set((state)=>{
-                return {cateName, cateIdx:index}
+            set((state) => {
+                return { cateName, cateIdx: index }
             })
-            
+
         }
 
 
